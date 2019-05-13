@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  deploy: #デプロイするジョブ
+    working_directory: /root
+    steps:
+       - run: echo "hoge"
+#      - checkout
+#      - run: cp /root/index.html /usr/share/nginx/html/index.html
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - deploy: # deployはbuildのあとに実行
+          filters: # masterブランチの場合のみデプロイする
+            branches:
+              only: master
