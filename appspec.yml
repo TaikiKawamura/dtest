@@ -2,21 +2,10 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ec2-user/account-api
+    destination: /usr/share/nginx/html
 permissions:
   - object: /
-    owner: ec2-user
-    group: ec2-user
-    mode: 777
+    owner: nginx
+    group: nginx
+    mode: 644
     pattern: "**"
-hooks:
-  AfterInstall:
-    - location: hooks/build.sh
-      timeout: 1000
-      runas: ec2-user
-    - location: hooks/nginx-restart.sh
-      timeout: 300
-      runas: root
-    - location: hooks/php-fpm-restart.sh
-      timeout: 300
-      runas: root
