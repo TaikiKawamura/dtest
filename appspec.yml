@@ -9,3 +9,8 @@ permissions:
     group: nginx
     mode: 644
     pattern: "**"
+hooks:
+  BeforeInstall:
+    - location: beforeInstall.sh
+      timeout: 300
+      runas: root
